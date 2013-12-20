@@ -1,0 +1,257 @@
+/*
+ *认证管理引导页
+ */
+.auth-guide-content{
+	margin: 50px auto;
+	padding: 30px 0;
+	width: 660px;
+	height: 120px;
+	background: #cfe7de;
+	color: #666;
+	text-align: center;
+}
+.auth-guide-content p{
+	line-height: 2.2em;
+}
+.auth-guide-content .auth-links{
+	height: 32px;
+	padding-top: 36px;
+}
+.auth-guide-content .auth-links a{
+	width: 132px;
+	height: 32px;
+	line-height: 32px;
+	display: inline-block;
+	box-shadow: 2px 2px 2px #ccc;
+    -webkit-box-shadow:2px 2px 2px #ccc;
+    -moz-box-shadow:2px 2px 2px #ccc;
+    margin: 0 4px;
+}
+.auth-guide-content .auth-links a.real-name{
+	border: 1px solid #660066;
+	background: #751a75;
+	color: #fff;
+}
+.auth-guide-content .auth-links a.real-name:hover{
+	background: #934e93;
+}
+.auth-guide-content .auth-links a.real-service{
+	border: 1px solid #d0d0d0;
+	background: #eeeeee;
+	color: #751a75;
+}
+.auth-guide-content .auth-links a.real-service:hover{
+	background: #ffffff;
+}
+/*
+ *认证管理列表页
+ */
+.auth-list-content{
+	padding: 18px 0;
+	color: #666;
+}
+.auth-grid{
+	border-collapse: collapse;
+	empty-cells : show;
+}
+.auth-grid th{
+	border: #dddddd solid 1px;
+	font-weight: normal;
+	background: #f1f1f1;
+	line-height: 30px;
+}
+.auth-grid td{
+	text-align: center;
+	border: #dddddd solid 1px;
+	padding: 3px;
+	height: 24px;
+}
+.auth-grid td span.notice{
+	color: #d14608;
+}
+/*
+ *认证表单
+ */
+.auth-form-content {
+	padding-top: 60px;
+}
+.auth-form-content .control-group{
+	margin-bottom: 20px;
+}
+.auth-form-content .control-group .control-label{
+	float: left;
+	padding-top: 15px;
+	width: 194px;
+	text-align: right;
+	font-size: 16px;
+	color: #666;
+}
+.auth-form-content .controls{
+	margin-left: 204px;
+}
+.auth-form-content .controls .input-large{
+	color: #999;
+	font-size: 18px;
+	width: 280px;
+	padding: 0 10px;
+	height: 40px;
+	border:1px solid #cccccc;
+}
+.service-type{
+	width: 102px;
+	height: 32px;
+	background: #eeeeee;
+	border:1px solid #d0d0d0;
+	color: #660066;
+	cursor: pointer;
+}
+.apply-submit{
+	width: 190px;
+	height: 40px;
+	border: 0;
+	background: #751a75;
+	color: #fff;
+	cursor: pointer;
+	font-size: 16px;
+}
+.file{
+	border: 1px solid #CCCCCC;
+	width:280px;
+	padding:8px 10px;
+	color:#999;
+}
+.controls .error, .controls .right{
+	font-size:12px;
+	height:20px;
+	display:inline-block;
+	padding-left:20px;
+	color:#666;
+	background:url(../../images/ucenter/message_icons.png) no-repeat;
+}
+.controls .error{
+	background-position: 0 -26px;
+}
+.controls .right{
+	background-position: 0 0;	
+}
+.submit{
+	padding: 0 20px;
+	height: 40px;
+	border: 0;
+	background: #751a75;
+	color: #fff;
+	cursor: pointer;
+	font-size: 16px;
+}
+/*
+ *弹出窗口
+ */
+.overlay{
+	position:fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    background:rgba(0,0,0,0.5);
+    background:#000 5;/*CSS Hack,只能对ie9以下浏览器ie6,ie7,ie8有效，否侧ie10,FF,Cherome会失去透明效果*/
+    filter:Alpha(opacity=50);/*只对ie7,ie8有效*/
+	display : none;
+}
+.service-layout{
+	position: absolute;
+	top:50%;
+	left: 50%;
+	width: 820px;
+	height: 560px;
+	margin: -281px 0 0 -411px;
+	overflow-y: scroll;
+	background: #fff;
+	box-shadow: 0px 0px 2px #000;
+	border: 1px solid #a1a1a1;
+}
+.service-head{
+	height: 33px;
+	background: #ececec;
+	line-height: 33px;
+	border-bottom: 1px solid #ececec;
+	padding: 0 0 0 12px;
+	color: #666;
+	position: relative;
+}
+.service-head .close{
+	position: absolute;
+	top: 4px;
+	right: 5px;
+	display: block;
+	width: 23px;
+	height: 23px;
+	line-height: 23px;
+	text-align: center;
+	border: 1px solid #cbcbcb;
+	color: #c1c1c1;
+}
+.service-head .tip{
+	padding-left: 24px;
+}
+.service-head .tip i{
+	font-style: normal;
+	color: #f00;
+}
+.selected-items, .service-row{
+	padding:10px;
+	color: #666;
+	overflow: hidden;
+}
+.selected-items{
+	background: #751a75;
+	color: #eee;
+}
+.row-even{
+	background: #f1f1f1;
+}
+.selected-name, .service-name{
+	float: left;
+	width: 140px;
+	font-weight: bold;
+	padding: 10px 0;
+}
+.selected-list, .service-list{
+	float: left;
+	width: 640px;
+}
+.selected-list li, .service-list li{
+	float: left;
+	display: block;
+	width: 160px;
+	height: 12px;
+	padding:6px 0;
+	cursor: pointer;
+}
+.selected-list input, .service-list li input{
+	float: left;
+	margin-right: 6px;
+}
+
+/*
+ *覆盖easyui默认样式
+ */
+.tabs-header, .tabs-scroller-left, .tabs-scroller-right, .tabs-tool, .tabs, .tabs-panels, .tabs li a.tabs-inner, .tabs li.tabs-selected a.tabs-inner, .tabs-header-bottom .tabs li.tabs-selected a.tabs-inner, .tabs-header-left .tabs li.tabs-selected a.tabs-inner, .tabs-header-right .tabs li.tabs-selected a.tabs-inner{
+	border-color: #ddd;
+}
+.tabs-header, .tabs-tool {
+    background-color: #f8f8f8;
+}
+.tabs li.tabs-selected a.tabs-inner{
+	background: linear-gradient(to bottom, #ccc 0px, #FFFFFF 100%) repeat-x scroll 0 0 transparent;
+    color: #666;
+}
+.tabs li a.tabs-inner {
+    background: linear-gradient(to bottom, #eee 0px, #fff 100%) repeat-x scroll 0 0 transparent;
+    color: #999;
+}
+.tabs li a.tabs-inner:hover{
+	background:#ccc;
+}
+.panel-header, .panel-body{
+	border-color:#ccc;
+}

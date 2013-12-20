@@ -1,0 +1,417 @@
+@charset "utf-8";
+.register-wrap{
+	width:960px;
+	margin:0 auto;	
+	background:#fff;
+	padding-bottom: 84px;
+}
+/*
+ *注册页面头部
+ */
+.register-header{
+	height:86px;
+	border-bottom:1px solid #e5e5e5;	
+}
+.register-logo {
+    float: left;
+    height: 45px;
+    width: 160px;
+	padding:30px 0 0 70px;
+}
+.register-logo h1{
+	background:url(../../images/main/logo.png) no-repeat;
+}
+.register-logo h1 a{
+	display:block;
+	width:160px;
+	height:45px;
+}
+.register-title{
+	float:left;
+	padding:44px 0 0 30px;
+	font-size:30px;
+	font-family:"微软雅黑";
+	color:#565656;
+}
+.register-link{
+	float:right;
+	padding:64px 82px 0 0;
+	color:#565656;
+}
+/*
+ *注册页面表单
+ */
+.register-content{
+	padding:60px 0 0 75px;
+	min-height:530px;
+}
+.control-group{
+	min-height: 48px;
+	clear:both;
+	margin-bottom:22px;	
+}
+.control-group .control-label{
+	float:left;
+	width:120px;
+	padding-top: 5px;
+	font-size:14px;
+	color:#666666;
+	height:42px;
+	line-height:42px;
+}
+.control-group .controls{
+	float: left;
+	width: 378px;	
+}
+.connect-to{
+	float: left;
+	height: 42px;
+	line-height: 42px;
+	padding: 0 5px;
+}
+.control-group .controls .xxlarge, .control-group .controls .xlarge, .control-group .controls .large{
+	float: left;
+	display: block;
+	color:#666;
+	border:1px solid #bdbdbd;
+	height:40px;
+	line-height:40px;
+	padding:0 10px;
+	width:358px;
+	font-size:20px;	
+}
+.control-group .controls .xxlarge{
+	width:338px;
+}
+.control-group .controls .xlarge{
+	width:222px;
+}
+.control-group .controls .large{
+	width: 52px;
+}
+.control-group .custom-select{
+	width: 380px;
+}
+.control-group .alert-message{
+	float: left;
+}
+.upload-file{
+	float: left;
+}
+.input-append .btn{
+	float: left;
+	display: block;
+	width: 70px;
+	height: 30px;
+	line-height: 30px;
+	background: #7d7d7d;
+	color: #fff;
+	text-align: center;
+	margin-top: 6px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+.control-group .Validform_wrong, .control-group .Validform_right{
+	float: left;
+	height: 20px;
+	margin-right: 16px;
+	margin-top: 10px;
+	padding-left: 24px;
+	background: url(../../images/main/sprites_register_icons.png) no-repeat;	
+}
+.control-group .Validform_wrong{
+	color: #ff5400;
+	background-position: 0 -26px;
+}
+.control-group .Validform_right{
+	color: #666666;
+	background-position: 0 0;
+}
+.get-check-code{
+	float: left;
+	height: 20px;
+	margin-top: 10px;
+	width: 104px;
+	height: 24px;
+}
+.get-check-code a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 24px;
+	text-align: center;
+	background: #7d7d7d;
+	color: #fff;
+}
+.checkboxMsg{
+	color:#FF5400;
+	padding:0 10px;
+}
+.passwordStrength{
+	clear: both;
+	margin-left: 120px;
+}
+.passwordStrength span{
+	display: inline-block;
+	width: 117px;
+	height: 10px;
+	background: #ccc;
+	margin-right: 4px;
+}
+.passwordStrength span.c1{
+	background: #d98e8e;
+}
+.passwordStrength span.c2{
+	background: #e4d487;
+}
+.passwordStrength span.c3{
+	background: #82d49d;
+}
+.resend{
+	float: left;
+	margin-top: 16px;
+}
+.register-btn{
+	border: 0;
+	width: 270px;
+	height: 40px;
+	background: #660066;
+	color: #fff;
+	font-size: 20px;
+	font-family: '微软雅黑';
+	cursor:pointer;
+}
+/*
+ *注册第二个步骤
+ */
+.success-panel{
+	color: #666;
+	font-family: "微软雅黑";
+	height: 101px;
+	margin-left: 54px;
+	margin-bottom: 60px;
+	padding-left: 126px;
+	background: url(../../images/main/ok_icon.png) no-repeat;
+}
+.success-panel h2{
+	font-size: 30px;
+}
+.success-panel h2 .name{
+	font-size: 36px;
+	color: #feaf04;
+	padding-right: 10px;
+	vertical-align: bottom;
+}
+.success-panel p{
+	padding-top: 20px;
+	font-size: 16px;
+}
+.second-form{
+	color: #666;
+}
+.second-form h6.notice{
+	font-size: 12px;
+	font-weight: normal;
+}
+.form-column .title{
+	font-size: 20px;
+	padding-top: 34px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #e4e4e4;
+	margin-bottom: 24px;
+}
+.submit-form, .dont-submit{
+	font-size: 20px;
+	width: 180px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+}
+.submit-form{
+	border: 0;
+	cursor: pointer;
+	background: #660066;
+}
+.dont-submit{
+	display: inline-block;
+	vertical-align: bottom;
+	background: #7d7d7d;
+}
+.control-group .notice{
+	float: left;
+	color: #666;
+	margin-left: 10px;
+	margin-top: 6px;
+	width: 116px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	background: #fff4c2;
+}
+.control-group .intro{
+	clear: both;
+	margin-left: 120px;
+}
+.control-group .intro .link{
+	color: #660066;
+	text-decoration: underline;
+}
+/*
+ *用户登陆
+ */
+.login-wrap{
+	width:960px;
+	margin:0 auto;	
+	background:#fff;
+	padding-bottom: 24px;
+}
+.login-content{
+	min-height: 450px;
+	background: url(../../images/main/login_bg.jpg) 20px 40px no-repeat;
+}
+.login-panel{
+	float: right;
+	margin-top: 40px;
+	margin-right: 120px;
+	width: 280px;
+	height: 310px;
+	background: #e9e9e9;
+}
+.login-form{
+	padding: 14px 0 0 32px;
+}
+.login-form .error{
+	font-weight: normal;
+	color: #ff5400;
+	height: 20px;
+	line-height: 16px;
+	padding-left: 24px;
+	margin-bottom: 4px;
+	background: url(../../images/main/sprites_register_icons.png) 0 -26px no-repeat;
+}
+.login-form .control-row{
+	min-height: 48px;
+	margin-bottom:16px;	
+}
+.login-form .control-row label.title{
+	line-height: 20px;
+	color: #666;
+}
+.control-row .input-large{
+	border: 1px solid #ccc;
+	width: 200px;
+	height: 26px;
+	line-height: 26px;
+	padding:0 10px;
+	color: #666;
+}
+.control-row .input-small{
+	border: 1px solid #ccc;
+	width: 86px;
+	height: 26px;
+	line-height: 26px;
+	padding:0 10px;
+	color: #666;
+}
+.control-row img.checkcode{
+	margin-left: 10px;
+	width: 100px;
+	height: 26px;
+	border:1px solid #ccc;
+	vertical-align: bottom;
+}
+.control-login .login-button{
+	border: 0;
+	width: 222px;
+	height: 35px;
+	background: #660066;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+}
+.control-link p{
+	font-size: 12px;
+	color: #666;
+	padding-top: 8px;
+}
+.forgot-password{
+	float: right;
+	margin-right: 20px;
+	color: #666;
+}
+/*
+ *注册成功
+ */
+.register-success{
+	margin: 84px auto;
+	width: 664px;
+	height: 238px;
+	background: url(../../images/main/reg_success.jpg) no-repeat;
+}
+.success-content{
+	padding-left: 150px;
+}
+.success-content h2{
+	font-size: 30px;
+	color: #666;
+}
+.success-content .username{
+	color: #feaf04;
+	font-size: 36px;
+	font-family: arial;
+	padding-right: 10px;
+}
+.success-content .tip{
+	padding:10px 0 24px;
+	font-size: 16px;
+	color: #666;
+	font-family: "微软雅黑";
+}
+.suggest-panel .text{
+	color: #660066;
+	line-height: 22px;
+}
+.suggest-panel .links{
+	height: 24px;
+	padding-top:22px;
+}
+.suggest-panel .links .cer-v, .suggest-panel .links .email-v{
+	display: inline-block;
+	width: 100px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	color: #fff;
+}
+.suggest-panel .links .cer-v{
+	background: #660066;
+}
+.suggest-panel .links .email-v{
+	margin-left: 10px;
+	background: #808080;
+}
+.next-do{
+	color: #565656;
+	padding-top: 48px;
+}
+.next-do a{
+	color: #660066;
+}
+/*
+ *页脚
+ */
+.user-footer{
+	clear: both;
+	border-top: 1px solid #e4e4e4;
+	padding-top: 20px;
+}
+.user-footer p{
+	text-align: center;
+}
+.user-footer p.s1 {
+    color: #666666;
+}
+.user-footer p.s2 {
+    color: #999999;
+}

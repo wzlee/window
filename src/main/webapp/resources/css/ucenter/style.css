@@ -1,0 +1,341 @@
+@charset "utf-8";
+/*  
+*@Description: public reset css  
+*@Author: Roger Xia  
+*@Update: Roger Xia(2012-11-23 15:26)  
+*/
+
+/* 清除内外边距 */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */ dl, dt, dd, ul, ol, li, /* list elements 列表元素 */ pre, /* text formatting elements 文本格式元素 */ fieldset, lengend, button, input, textarea, /* form elements 表单元素 */ th, td { /* table elements 表格元素 */
+	margin: 0;
+	padding: 0;
+}
+/* 设置默认字体 */
+body, button, input, select, textarea { /* for ie */
+	/*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+    font: 12px/1 "\5b8b\4f53",Arial, sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+}
+p {
+	line-height:1.5em;
+}
+h1 {
+	font-size: 18px; /* 18px / 12px = 1.5 */
+}
+h2 {
+	font-size: 16px;
+}
+h3 {
+	font-size: 14px;
+}
+h4, h5, h6 {
+	font-size: 100%;
+}
+address, cite, dfn, em, var {
+	font-style: normal;
+} /* 将斜体扶正 */
+code, kbd, pre, samp, tt {
+	font-family: "Courier New", Courier, monospace;
+} /* 统一等宽字体 */
+small {
+	font-size: 12px;
+} /* 小于 12px 的中文很难阅读，让 small 正常化 */
+/* 重置列表元素 */
+ul, ol {
+	list-style: none;
+}
+/* 重置文本格式元素 */
+a {
+	text-decoration: none;
+}
+abbr[title], acronym[title] { /* 注：1.ie6 不支持 abbr; 2.这里用了属性选择符，ie6 下无效果 */
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+q:before, q:after {
+	content: '';
+}
+/* 重置表单元素 */
+legend {
+	color: #000;
+} /* for ie6 */
+fieldset, img {
+	border: none;
+} /* img 搭车：让链接里的 img 无边框 */
+/* 注：optgroup 无法扶正 */
+button, input, select, textarea {
+	font-size: 100%; /* 使得表单元素在 ie 下能继承字体大小 */
+}
+/* 重置表格元素 */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* 重置 hr */
+hr {
+	border: none;
+	height: 1px;
+}
+/* 让非ie浏览器默认也显示垂直滚动条，防止因滚动条引起的闪烁 */
+html {
+	overflow-y: scroll;
+}
+body{
+	background: #f1f1f1;
+}
+.container{
+	width: 960px;
+	margin: 0 auto;
+}
+.f-purple{
+	color:#660066;
+}
+.hide{
+	display: none;
+}
+.clr{
+	clear: both;
+	height: 0;
+}
+/*
+ *页眉
+ */
+.header{
+	width: 100%;
+	height: 80px;
+	background: #fff;
+	border-bottom: 2px solid #dcdcdc;
+}
+.topbar {
+    color: #666666;
+    padding-top: 10px;
+    text-align: right;
+}
+.top-main{
+	padding-top: 12px;
+}
+.top-main .logo{
+	float: left;
+	width: 120px;
+	height: 34px;
+}
+.top-main .logo h1{
+	width: 100%;
+	height: 100%;
+	background: url("../../images/ucenter/logo.png") no-repeat scroll 0 0 transparent;
+}
+.top-main .logo h1 a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.top-main .title{
+	float:left;
+	padding-left: 16px;
+	font-size: 18px;
+	color: #666;
+	font-family: "微软雅黑";
+	padding-top: 8px;
+}
+.top-main .search-box{
+	float: right;
+	width: 262px;
+	height: 27px;
+}
+.select-box{
+	float: left;
+	width: 66px;
+	height: 27px;
+}
+.select-box .selected{
+	padding-left: 10px;
+	width: 56px;
+	line-height: 27px;
+	height: 27px;
+	background: #dadada;
+	position: relative;
+}
+.select-box .selected i{
+	float: right;
+	margin: 11px;
+	display: block;
+	width: 9px;
+	height: 6px;
+	background: url(../../images/ucenter/arrow.png)  no-repeat;
+}
+.select-box .select-list{
+	position: absolute;
+	top:27px;
+	left: 0;
+	width: 66px;
+	display: none;
+}
+.select-box .select-list li{
+	width: 100%;
+	text-align: center;
+	line-height: 27px;
+	height: 27px;
+	border-bottom: 1px solid #ccc;
+	background: #eee;
+	cursor: pointer;
+}
+.search-box .controls{
+	float: left;
+	width: 145px;
+}
+.search-box .input-large{
+	width: 123px;
+	height: 25px;
+	padding: 0 10px;
+	border: 1px solid #d7cfd9;
+	color: #999;
+}
+.search-button{
+	float: left;
+	width: 48px;
+}
+.search-button button{
+	border: 0;
+	width: 48px;
+	line-height: 25px;
+	background: #660066;
+	color: #fff;
+	cursor: pointer;
+}
+/*
+ *用户头部
+ */
+.user-header{
+	height: 105px;
+	border-right: 1px solid #d7d7d7;
+	border-bottom: 1px solid #d7d7d7;
+	border-left: 1px solid #d7d7d7;
+}
+.user-photo{
+	float: left;
+	width: 79px;
+	height: 79px;
+}
+.user-photo a{
+	margin: 10px 0 0 16px;
+	display: block;
+	width: 78px;
+	height: 78px;
+	border: 1px solid #ccc;
+}
+.user-info{
+	margin-left: 116px;
+}
+.user-info h3{
+	font-size: 20px;
+	color: #333;
+	font-family: "微软雅黑";
+	font-weight: normal;
+	padding-top: 20px;
+	height: 24px;
+}
+.user-info .line{
+	padding:0 16px;
+}
+.user-info .cer{
+	display: inline-block;
+	width: 118px;
+	height: 24px;
+	vertical-align: middle;
+	background: url(../../images/ucenter/cer.jpg) no-repeat;
+}
+.user-info .bar{
+	padding-top: 14px;
+	color: #7d7d7d;
+	font-size: 16px;
+}
+.user-info .bar .appraise{
+	float: left;
+	width: 182px;
+}
+.user-info .bar .message{
+	margin-left: 182px;
+}
+/*
+ *内容框架
+ */
+.main-container{
+	margin: 0 auto;
+	width: 958px;
+	border-left: 1px solid #c4c4c4;
+	border-right: 1px solid #c4c4c4;
+	border-bottom: 1px solid #c4c4c4;
+}
+/*左菜单*/
+.sidebar{
+	float: left;
+	width: 120px;
+	min-height: 540px;
+}
+.sidebar li{
+	height: 28px;
+	line-height: 28px;
+	margin-top: 6px;
+}
+.sidebar li a{
+	display: block;
+	padding-left: 8px;
+	height: 28px;
+	color: #666;
+}
+.sidebar li a:hover, .sidebar li.on a{
+	color: #660066;
+	background: #d0d0d0;
+}
+/*内容区*/
+.main-column{
+	margin-left: 120px;
+	border-left: 1px solid #c4c4c4;
+	padding: 20px 25px;
+	background: #fff;
+}
+.main-column .top-title{
+	font-size: 22px;
+	color: #999;
+	font-family: "微软雅黑";
+	font-weight: normal;
+	padding-bottom: 6px;
+	border-bottom: 1px solid #dddddd;
+}
+
+
+/*******************************************
+*模仿首页服务分类的悬停事件样式	xuwf 2013-9-6
+*/
+.seller .mod-sub-cate{
+	display:none;
+	position:relative;
+	margin:-30px 0px 0px -70px;
+	left:188px;
+	width:70px;
+	height:50px;
+	background:#fff;
+	border:5px solid #dbdbdb;
+	box-shadow: 5px 5px 10px #666;
+	z-index:998;
+}
+.seller .mod-sub-cate dl dt a:hover{
+	color:green;
+	background: #fff;
+}
+.buyer .mod-sub-cate{
+	display:none;
+	position:relative;
+	margin:-30px 0px 0px -70px;
+	left:188px;
+	width:70px;
+	height:50px;
+	background:#fff;
+	border:5px solid #dbdbdb;
+	box-shadow: 5px 5px 10px #666;
+	z-index:998;
+}
+.buyer .mod-sub-cate dl dt a:hover{
+	color:green;
+	background: #fff;
+}
+/*******************************************/
