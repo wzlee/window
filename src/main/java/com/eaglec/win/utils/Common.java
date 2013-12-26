@@ -34,12 +34,12 @@ public class Common {
 	public static int resultNumJ;		//服务搜索结果分页显示数量（矩形）
 	public static int resultNumL;		//服务搜索结果分页显示数量（列表形）
 	public static int newsPageNum;		//新闻频道中的新闻列表，每页显示多少条数据
-	public static String channelCode;	//频道编码
-	public static String icRegNumber;		//运营支撑系统的工商注册号
+	public static String channelCode;	//频道编码	
 	public static String CENTER_WEBSITE;		//枢纽平台网址	
 	public static Integer windowId;			//窗口对象的16个窗口号==企业表中的所属窗口	
 	public static Boolean syncSwitch;
 	public static String syncUrl;
+	public static String windowDomain;
 	
 	static{
 		ResourceBundle bundle = ResourceBundle.getBundle("config");
@@ -50,12 +50,12 @@ public class Common {
 		resultNumJ = Integer.parseInt(bundle.getString("result.numJ"));
 		resultNumL = Integer.parseInt(bundle.getString("result.numL"));
 		newsPageNum = Integer.parseInt(bundle.getString("news.pageNum"));
-		channelCode = bundle.getString("channel.code");
-		icRegNumber = bundle.getString("icRegNumber");
+		channelCode = bundle.getString("channel.code");		
 		CENTER_WEBSITE = bundle.getString("center.website");
 		windowId = Integer.parseInt(bundle.getString("window.id"));
 		syncSwitch = Boolean.parseBoolean(bundle.getString("sync.switch"));
-		syncUrl = bundle.getString("sync.url");
+//		syncUrl = bundle.getString("sync.url");
+		windowDomain = bundle.getString("window.domain");
 	}
 
 	/**

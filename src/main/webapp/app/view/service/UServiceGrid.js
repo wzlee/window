@@ -52,22 +52,44 @@ Ext.define('plat.view.service.UServiceGrid',{
 					        }
 				        },
 				        { text: '服务机构',align:'center',width:120,dataIndex:'enterprise.name',locked:true},
-				        {
-				       		header : '配图',
-				       		dataIndex : 'picture',
-				       		width : 50,
-				       		locked : true,
-				       		toolTip : '55',
-				       		align : 'center',
-				       		renderer : function (value) {				       			
-				       			
-				       			if (value) {
-					       			return "<a href='upload/" + value + "' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
-				       			} else {
-				       				return "<a href='resources/images/nopic.gif' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
-				       			}
-				       		}
-				       }, {
+//				        {
+//				       		header : '配图',
+//				       		dataIndex : 'picture',
+//				       		width : 50,
+//				       		locked : true,
+//				       		toolTip : '55',
+//				       		align : 'center',
+//				       		renderer : function (value) {
+//				       			if (value) {
+//				       				if(value.indexOf('http') > -1){
+//				       					return "<a href='" + value + "' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
+//				       				}else {
+//				       					return "<a href='upload/" + value + "' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
+//				       				}
+//				       			} else {
+//				       				return "<a href='resources/images/nopic.gif' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
+//				       			}
+//				       		}
+//				       },
+ 						{
+					        xtype : 'actioncolumn',
+							text : '配图',
+							align : 'center',
+							sortable : false,
+							locked : true,
+							width : 50,
+							items : [{
+								icon : 'jsLib/extjs/resources/themes/icons/scan.png',
+								tooltip : '查看服务配图',
+								handler : function(grid, rowIndex, colIndex, node,
+										e, record, rowEl) {
+									this.fireEvent('pictureclick', this, grid,
+											rowIndex, colIndex, node, e, record,
+											rowEl);
+								}
+							}]
+				    	},
+				       {
 				            xtype:'actioncolumn',
 				            text:'变更',
 				            align:'center',

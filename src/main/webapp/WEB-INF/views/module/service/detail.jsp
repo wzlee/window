@@ -41,7 +41,13 @@
   <div class="detail-container">
     <div class="column-l">
       <div class="thumb">
-      		<img class="lazy" src="resources/images/service/default_service_pic.gif" data-original="upload/${service.picture}" width="228" height="190" alt="${hot.serviceName }" title="${hot.serviceName }" onerror="nofind();"/>
+      		<c:if test="${service.picture.contains('http')}">
+      			<img class="lazy" src="resources/images/service/default_service_pic.gif" data-original="${service.picture}" width="228" height="190" alt="${hot.serviceName }" title="${hot.serviceName }" onerror="nofind();"/>
+      		</c:if>
+      		<c:if test="${!service.picture.contains('http')}">
+      			<img class="lazy" src="resources/images/service/default_service_pic.gif" data-original="upload/${service.picture}" width="228" height="190" alt="${hot.serviceName }" title="${hot.serviceName }" onerror="nofind();"/>
+      		</c:if>
+      		
       </div>
       <ul class="choose-btn">
 	    	<li class="s1"><a href="javascript:void(0);">收藏</a></li>
@@ -85,7 +91,7 @@
 			          <li><span class="meta-tit">联&nbsp;&nbsp;系&nbsp;&nbsp;人：</span><span class="meta-info">${service.enterprise.linkman }</span></li>
 			          <li><span class="meta-tit">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</span><span class="meta-info">${service.enterprise.address}</span></li>
 			        </ul>
- 			        <div class="follow"><a href="javascript:void(0);">关注该机构</a></div> 
+ 			        <div class="follow"><a href="javascript:void(0);"></a></div> 
 				</div>
 		</div>
 		</div>
@@ -211,6 +217,7 @@
 <script type="text/javascript" src="jsLib/artDialog-5.0.3/artDialog.plugins.min.js"></script>
 <script type="text/javascript" src="resources/js/main.js"></script>
 <script type="text/javascript" src="resources/js/public/applyService.js"></script>
+<script type="text/javascript" src="resources/js/collectService.js"></script>
 <script type="text/javascript">
 	serviceApply();
 </script>

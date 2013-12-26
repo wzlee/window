@@ -232,7 +232,7 @@ public class User implements Serializable {
 		return userStatus;
 	}
 
-	public void setApproved(boolean isApproved) {
+	public void setIsApproved(boolean isApproved) {
 		this.isApproved = isApproved;
 	}
 
@@ -256,7 +256,7 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public void setPersonal(boolean isPersonal) {
+	public void setIsPersonal(boolean isPersonal) {
 		this.isPersonal = isPersonal;
 	}
 

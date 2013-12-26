@@ -39,7 +39,12 @@
         						<c:when test="${newlists.picture != ''}">
         							<div class="news-thumb">
 		          						<a href="news/getOneNewsDetails?id=${newlists.id}" target="_blank">
-		          							<img width="160" height="120" src="upload/${newlists.picture}" onerror="this.src='resources/images/service/default_service_pic.gif'"/>
+		          							<c:if test="${newlists.picture.contains('http')}">
+		          								<img width="160" height="120" src="${newlists.picture}" onerror="this.src='resources/images/service/default_service_pic.gif'"/>
+		          							</c:if>
+		          							<c:if test="${!newlists.picture.contains('http')}">
+		          								<img width="160" height="120" src="upload/${newlists.picture}" onerror="this.src='resources/images/service/default_service_pic.gif'"/>
+		          							</c:if>
 		          						</a>
 		          					</div>
         						</c:when>
@@ -90,7 +95,12 @@
 			             <c:forEach var="item" items="${hotNews }" begin="0" end="0">
 				        	<div class="box-thumb">
 				        	<a href="news/getOneNewsDetails?id=${item.id }" title="${item.title }">
-				        	<img src="upload/${item.picture}" alt="" width="190" height="80" onerror="this.src='resources/images/service/default_service_pic.gif'"/>
+				        	<c:if test="${item.picture.contains('http')}">
+				        		<img src="${item.picture}" alt="" width="190" height="80" onerror="this.src='resources/images/service/default_service_pic.gif'"/>
+				        	</c:if>
+				        	<c:if test="${!item.picture.contains('http')}">
+				        		<img src="upload/${item.picture}" alt="" width="190" height="80" onerror="this.src='resources/images/service/default_service_pic.gif'"/>
+				        	</c:if>				        	
 				        	<h4>${fn:substring(item.title, 0, 13) }</h4></a>
 				        	</div>
 				          </c:forEach>

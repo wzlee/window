@@ -254,6 +254,7 @@ public class HomeController extends BaseController {
 			return "manage/login";
 		}else{
 			request.setAttribute("manager", JSON.toJSONString(manager));
+			request.setAttribute("CENTER_WEBSITE", Common.CENTER_WEBSITE);
 			return "manage/home";
 		}
 	}
@@ -412,7 +413,7 @@ public class HomeController extends BaseController {
 							request.setAttribute("message", "你已经激活了，不需要再次激活");
 							return "active_success";
 						}else{
-							userBiz.findUserByName(username).get(0).setApproved(true);
+							userBiz.findUserByName(username).get(0).setIsApproved(true);
 							userBiz.update(userBiz.findUserByName(username).get(0));
 							
 							User _user = userBiz.findUserByName(username).get(0);
@@ -510,7 +511,7 @@ public class HomeController extends BaseController {
 						String login_code = new String(Base64.encode(login_params.getBytes("utf-8")));
 						srcs.add(flat.getUcenter_api()+"?time="+time+"&action=synlogout&code="+URLEncoder.encode(login_code, "utf-8"));
 					}
-					model.addAttribute("message", "同步退出成功");
+					model.addAttribute("message", "退出成功");
 					model.addAttribute("srcs", srcs);
 					model.addAttribute("redirect_url",_redirect_uri);
 					return "oauth/sync";

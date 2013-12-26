@@ -1,5 +1,7 @@
 package com.eaglec.win.biz.impl.user;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -121,6 +123,14 @@ public class UserBizImpl implements UserBiz {
 	public List<User> find() {
 		// TODO Auto-generated method stub
 		return userDao.findList("from User");
+	}
+
+	@Override
+	public User findUserByEnterprise(Integer enterpriseId) {
+		String hql = "from User where enterprise.id = :id";
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("id", enterpriseId);
+		return userDao.get(hql, params);
 	}
 
 }

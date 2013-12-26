@@ -32,12 +32,21 @@ Ext.define('plat.view.enteruser.ApprPersonalUserDetailWindow', {
 					    	{fieldLabel: '申请时间',columnWidth:0.5, name:'applyTime' },
 				        	{fieldLabel: '个人近照',columnWidth:0.5,name:'personalPhoto', renderer : function(val){
 					    			if(val == '') return '暂无';
-					    			return "<a href='upload/" + val + "' class='fancybox'>点击查看</a>";
+					    			if(val.indexOf('http') > -1){
+					    				return "<a target='_blank' href='" + val + "'>点击查看</a>";
+					    			}else {
+					    				return "<a target='_blank' href='upload/" + val + "'>点击查看</a>";
+					    			}
+					    			
 					    		}
 					    	},
 					    	{fieldLabel: '身份证附件照',columnWidth:0.5,name:'idCardPhoto', renderer : function(val){
 					    			if(val == '') return '暂无';
-					    			return "<a href='upload/" + val + "' class='fancybox'>点击查看</a>";
+					    			if(val.indexOf('http') > -1){
+						    			return "<a target='_blank' href='" + val + "'>点击查看</a>";
+						    		}else {
+						    			return "<a target='_blank' href='upload/" + val + "'>点击查看</a>";
+						    		}					    			
 					    		} 
 					    	}
 				        ]
@@ -70,7 +79,11 @@ Ext.define('plat.view.enteruser.ApprPersonalUserDetailWindow', {
 					    	{fieldLabel: '头像',columnWidth:0.5,name:'user.headPortraint',
 					    		renderer : function(val){
 					    			if(val == '') return '暂无';
-					    			return "<a href='upload/" + val + "' class='fancybox'>点击查看</a>";
+					    			if(val.indexOf('http') > -1){
+					    				return "<a href='" + val + "' class='fancybox'>点击查看</a>";
+					    			}else {
+					    				return "<a href='upload/" + val + "' class='fancybox'>点击查看</a>";
+					    			}					    			
 					    		}
 					    	},
 					    	{fieldLabel: '联系地址',columnWidth:1,name:'user.address' }

@@ -23,6 +23,9 @@
 		}
 	}
  %>
+<input type="hidden" id="attentionid" value="${attentionid }"/> 
+<input type="hidden" id="beattentionid" value="${beattentionid }"/> 
+<input type="hidden" id="isattention" value="${isattention }"/> 
 <c:set value='<%=request.getSession().getAttribute("user")%>' var="msg"/>
     <div class="top-toolbar">
     <div class="wraper clearfix">

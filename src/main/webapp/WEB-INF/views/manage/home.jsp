@@ -50,6 +50,7 @@
     	var manager = <%=request.getAttribute("manager") %>;
     	var menu = <%=menu %>;
     	var windowId = <%=windowId %>
+    	var PlatUrl = '<%=request.getAttribute("CENTER_WEBSITE") %>';
     </script>
 	<script type="text/javascript" src="app/app.js"></script>
 	<script type="text/javascript">

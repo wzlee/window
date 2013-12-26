@@ -11,9 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -142,7 +140,7 @@ public class PublicController extends BaseController {
 				filepath.mkdir();
 				logger.info("[" + filepath.getAbsolutePath() + "]创建成功!");
 			}
-		
+			
 			int index = file.getOriginalFilename().lastIndexOf(".");
 			long timestamp = System.currentTimeMillis();
 			String orgFileName = timestamp + file.getOriginalFilename().substring(index);
@@ -150,10 +148,10 @@ public class PublicController extends BaseController {
 			file.transferTo(orgFile);
 			/*保存文件对象信息*/
 			String date = StrUtils.formateDate("yyyy-MM-dd HH:mm:ss", new Date());
-			fileManager.setFname(orgFileName);
+			fileManager.setFname(Common.windowDomain + "/" + Common.uploadPath + "/" + orgFileName);
 			fileManager.setDate(date);
-			fileManagerBiz.saveFileManager(fileManager);
-			super.outJson(response, new JSONResult(true, orgFile.getName()));
+			fileManagerBiz.saveFileManager(fileManager);			
+			super.outJson(response, new JSONResult(true, Common.windowDomain + "/" + Common.uploadPath + "/" + orgFile.getName()));
 		} catch (Exception e) {
 			logger.info("Exception异常:" + e.getLocalizedMessage());
 			super.outJson(response, new JSONResult(false, e.getLocalizedMessage()));

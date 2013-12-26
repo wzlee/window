@@ -21,6 +21,7 @@ import com.eaglec.win.biz.publik.CategoryBiz;
 import com.eaglec.win.biz.service.ServiceBiz;
 import com.eaglec.win.domain.base.Category;
 import com.eaglec.win.domain.service.Service;
+import com.eaglec.win.utils.Common;
 import com.eaglec.win.utils.StrUtils;
 import com.eaglec.win.view.JSONData;
 import com.eaglec.win.view.JSONResult;
@@ -92,7 +93,12 @@ public class CategoryController extends BaseController {
 							for (Service se : s) {
 								String sname = se.getServiceName();
 								html.append("<dd>");
-								html.append("<a target='_blank' href=\"service/detail?id=").append(se.getId());
+								//该窗口的服务用红色字体显示   xuwf 2013-12-16修改
+								if(se.getEnterprise().getIndustryType() == Common.windowId){
+									html.append("<a style='color:red;' target='_blank' href=\"service/detail?id=").append(se.getId());
+								}else{
+									html.append("<a target='_blank' href=\"service/detail?id=").append(se.getId());
+								}
 								html.append("\">•"+ (sname.length() > 14 ? sname.substring(0, 15) : sname) +"</a>");
 								html.append("</dd>");
 							}

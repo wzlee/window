@@ -27,6 +27,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.parser.Feature;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.eaglec.win.biz.user.EnterpriseBiz;
 import com.eaglec.win.biz.user.StaffBiz;
@@ -86,6 +87,7 @@ public class HttpClientTest {
 //		}
 		HttpClient _httpClient = new HttpClient();
 		String _uri = ResourceBundle.getBundle("config").getString("oauth.user")+"?type=user&uid=1ee6123b49bbe51c55f8d96de2df9c38&token=f0f513105337136c583e34bbab2b576a";
+//		String _uri = "http://www.smemall.com.cn/oauth/user?type=user&uid=e625dec42191ae98a4c1e616d59f19f7&token=a7ca26deb234f4039f221c873360d996";
 		GetMethod getMethod = new GetMethod(_uri);
 		getMethod.getParams().setParameter(HttpMethodParams.RETRY_HANDLER, new DefaultHttpMethodRetryHandler());
 		getMethod.getParams().setContentCharset("UTF-8");
@@ -97,6 +99,8 @@ public class HttpClientTest {
 				InputStream _responseBody = getMethod.getResponseBodyAsStream();
 				String _responseString = InputStreamUtils.InputStreamTOString(_responseBody, "UTF-8");
 				logger.info(_responseString);
+				User _user = JSON.parseObject(_responseString, User.class,Feature.IgnoreNotMatch);
+				logger.info(_user.getIsApproved()?"是":"否");
 			}
 		} catch (HttpException e) {
 			logger.info("获取用户信息异常:"+e.getLocalizedMessage());

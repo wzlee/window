@@ -799,7 +799,7 @@ Ext.define('plat.controller.enteruser.EnterUserController', {
 						});
 						mask.show();
             			Ext.data.JsonP.request({
-						    url: PlatUrl + 'public/validateUserName ',
+						    url: PlatUrl + '/public/validateUserName ',
 						    timeout: 20000,
 						    params: {userName : window.down('textfield[name=userName]').getValue()},
 						    callbackKey: "callback",
@@ -845,60 +845,60 @@ Ext.define('plat.controller.enteruser.EnterUserController', {
 //            					return;
 //            				}
             				mask.show();
-            				if(PlatSwitch){
-            					// STEP2 验证营业注册是否存在            				
-	            				Ext.data.JsonP.request({
-									url: PlatUrl + 'public/validateIcRegNumber',
-									timeout: 300000,
-									params : {icRegNumber : icRegNumber, eid : form.findField('enterprise.id').getValue()},
-									callbackKey: "callback",
-									success: function(result) {	
-										if(!result.success){
-		            						mask.hide();
-			    							Ext.Msg.alert('提示', result.message);
-			    							return;
-		            					}else {
-		            						// STEP3  验证企业实名是否存在
-		            						Ext.data.JsonP.request({
-												url: PlatUrl + 'public/validateEname',
-												timeout: 300000,
-												params : {name : ename, eid : form.findField('enterprise.id').getValue()},
-												callbackKey: "callback",
-												success: function(result) {	
-													if(!result.success){
-		            									mask.hide();
-			    										Ext.Msg.alert('提示', result.message);
-			    										return;
-		            								}else {
-		            									// STEP4  提交表单
-				            							form.submit({
-								                    		url: 'ucenter/apply',
-								                    		success: function(fp, o) {
-								                    		mask.hide();
-								                        	if(o.success){
-								                        		Ext.Msg.alert('提示', '提交申请成功！');
-								                        		window.close();
-								                        	}
-								                    	},
-								                    	failure : function(form, action){
-									                    	mask.hide();
-									                    	Ext.Msg.alert('提示', action.result.message);
-								                        	window.close();
-								                    	}
-								                		});
-		            								}	            					
-												},
-												failure: function(result) {
-										 			Ext.Msg.alert('提示',"连接枢纽服务器失败，请联系管理员");
-												}
-											});
-		            					}	            					
-									},
-									failure: function(result) {
-										 Ext.Msg.alert('提示',"连接枢纽服务器失败，请联系管理员");
-									}
-								});
-            				}else {
+//            				if(PlatSwitch){
+//            					// STEP2 验证营业注册是否存在            				
+//	            				Ext.data.JsonP.request({
+//									url: PlatUrl + 'public/validateIcRegNumber',
+//									timeout: 300000,
+//									params : {icRegNumber : icRegNumber, eid : form.findField('enterprise.id').getValue()},
+//									callbackKey: "callback",
+//									success: function(result) {	
+//										if(!result.success){
+//		            						mask.hide();
+//			    							Ext.Msg.alert('提示', result.message);
+//			    							return;
+//		            					}else {
+//		            						// STEP3  验证企业实名是否存在
+//		            						Ext.data.JsonP.request({
+//												url: PlatUrl + 'public/validateEname',
+//												timeout: 300000,
+//												params : {name : ename, eid : form.findField('enterprise.id').getValue()},
+//												callbackKey: "callback",
+//												success: function(result) {	
+//													if(!result.success){
+//		            									mask.hide();
+//			    										Ext.Msg.alert('提示', result.message);
+//			    										return;
+//		            								}else {
+//		            									// STEP4  提交表单
+//				            							form.submit({
+//								                    		url: 'ucenter/apply',
+//								                    		success: function(fp, o) {
+//								                    		mask.hide();
+//								                        	if(o.success){
+//								                        		Ext.Msg.alert('提示', '提交申请成功！');
+//								                        		window.close();
+//								                        	}
+//								                    	},
+//								                    	failure : function(form, action){
+//									                    	mask.hide();
+//									                    	Ext.Msg.alert('提示', action.result.message);
+//								                        	window.close();
+//								                    	}
+//								                		});
+//		            								}	            					
+//												},
+//												failure: function(result) {
+//										 			Ext.Msg.alert('提示',"连接枢纽服务器失败，请联系管理员");
+//												}
+//											});
+//		            					}	            					
+//									},
+//									failure: function(result) {
+//										 Ext.Msg.alert('提示',"连接枢纽服务器失败，请联系管理员");
+//									}
+//								});
+//            				}else {
             					// STEP2 验证营业注册是否存在
 	            				Ext.Ajax.request({
 	            					url : 'ucenter/validateIcRegNumber',
@@ -941,7 +941,7 @@ Ext.define('plat.controller.enteruser.EnterUserController', {
 			            				});
 								    }
 	            				});
-            				}
+//            				}
             				
 			            }
             		});

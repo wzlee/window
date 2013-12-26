@@ -54,9 +54,13 @@ Ext.define('plat.view.enteruser.PersonalUserDetailWindow', {
 					    			if(val == null || val == ''){
 					    				return '暂无';
 					    			}else if(val == 'default_logo.jpg'){
-					    				return "<a href='resources/images/ucenter/default_logo.jpg' class='fancybox'>点击查看</a>";
+					    				return "<a target='_blank' href='resources/images/ucenter/default_logo.jpg'>点击查看</a>";
 					    			}else{
-					    				return "<a href='upload/" + val + "' class='fancybox'>点击查看</a>";
+					    				if(val.indexOf('http') > -1){
+					    					return "<a target='_blank' href='" + val + "'>点击查看</a>";
+					    				}else {
+					    					return "<a target='_blank' href='upload/" + val + "'>点击查看</a>";
+					    				}				    				
 					    			}
 					    		}
 					    	}
@@ -89,14 +93,22 @@ Ext.define('plat.view.enteruser.PersonalUserDetailWindow', {
 					    			if(val == null || val == ''){
 					    				return '暂无';
 					    			}
-					    			return "<a href='upload/" + val + "' class='fancybox'>点击查看</a>";
+					    			if(val.indexOf('http') > -1){
+					    				return "<a target='_blank' href='" + val + "'>点击查看</a>";
+					    			}else {
+					    				return "<a target='_blank' href='upload/" + val + "'>点击查看</a>";
+					    			}				    			
 					    		}
 					    	},
 					    	{fieldLabel: '身份证附件照',columnWidth:0.5,name:'idCardPhoto', renderer : function(val){
 					    			if(val == null || val == ''){ 
 					    				return '暂无';
 					    			}
-					    			return "<a href='upload/" + val + "' class='fancybox'>点击查看</a>";
+					    			if(val.indexOf('http') > -1){
+					    				return "<a target='_blank' href='" + val + "'>点击查看</a>";
+					    			}else {
+					    				return "<a target='_blank' href='upload/" + val + "'>点击查看</a>";
+					    			}					    			
 					    		} 
 					    	},
 					    	{fieldLabel: '邮箱地址',columnWidth:0.5,name:'email',

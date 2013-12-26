@@ -12,9 +12,17 @@
 	        <li>
 	          <div class="pic">
 	            <a href="javascript:void(0);">
-	            	<img class="lazy" src="resources/images/node/20130913160622.gif" 
+	            	<c:if test="${enterprise.photo.contains('http')}">
+	            		<img class="lazy" src="resources/images/node/20130913160622.gif" 
+	            	data-original="${enterprise.photo}"
+	            	width="36" height="36" />
+	            	</c:if>
+	            	<c:if test="${!enterprise.photo.contains('http')}">
+	            		<img class="lazy" src="resources/images/node/20130913160622.gif" 
 	            	data-original="upload/${enterprise.photo}"
 	            	width="36" height="36" />
+	            	</c:if>
+	            	
 	            </a>
 	          </div>
 	          <div class="intro">

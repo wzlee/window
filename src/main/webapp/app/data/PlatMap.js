@@ -12,11 +12,6 @@
  * @since 2013-8-22
  * 
  */
-//var PlatUrl = 'http://smemall.net/';
-var PlatUrl = 'http://localhost:8080/';
-var PlatSwitch = false;
-//var PlatSwitch = true;
-
 var PlatMap = {
 	//对应 Enterprises 实体类
 	Enterprises : {

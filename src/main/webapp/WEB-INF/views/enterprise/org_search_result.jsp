@@ -104,9 +104,14 @@
 				    <div class="list-view">
 				      <div class="pic">
 				      	<a href="javascript:void(0);" >
-				      		<img src="upload/${enterprise.photo }" title="${enterprise.name }" width="168" height="144" onerror="this.src='resources/images/service/default_service_pic.gif'"/>
+				      		<c:if test="${enterprise.photo.contains('http')}">
+				      			<img src="${enterprise.photo}" title="${enterprise.name }" width="168" height="144" onerror="this.src='resources/images/service/default_service_pic.gif'"/>
+				      		</c:if>
+				      		<c:if test="${!enterprise.photo.contains('http')}">
+				      			<img src="upload/${enterprise.photo }" title="${enterprise.name }" width="168" height="144" onerror="this.src='resources/images/service/default_service_pic.gif'"/>
+				      		</c:if>
 				      		<%-- <img class="lazy" src="resources/images/service/default_service_pic.gif" 
-									data-original="upload/${enterprise.photo}" 
+									data-original="${enterprise.photo}" 
 									width="168" height="144" alt="${enterprise.name}" 
 									title="${enterprise.name}" onerror="nofind();"/ --%>
 				      	</a>

@@ -95,5 +95,13 @@ public interface UserBiz {
 	 */
 	public List<User> find();
 	
-	
+	/**
+	 * 根据企业id查找企业主账号
+	 * @author cs
+	 * @since 2013-12-24
+	 * 
+	 * @param enterpriseId
+	 * @return
+	 */
+	public abstract User findUserByEnterprise(Integer enterpriseId);
 }

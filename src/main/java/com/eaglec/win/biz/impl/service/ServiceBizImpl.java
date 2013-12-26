@@ -480,7 +480,8 @@ public class ServiceBizImpl implements ServiceBiz, ServletContextAware {
 		  .append(Constant.SERVICE_STATUS_ADDED).append(",")
 	      .append(Constant.SERVICE_STATUS_CHANGE_AUDIT).append(",")
 		  .append(Constant.SERVICE_STATUS_DOWN_AUDIT).append(")")
-		  .append(" and s.enterprise.status = ").append(Constant.ENTERPRISE_STATUS_EFFECTIVE);
+		  .append(" and s.enterprise.status = ").append(Constant.ENTERPRISE_STATUS_EFFECTIVE)
+		  .append(" and s.enterprise.industryType = ").append(Common.windowId);
 		if ((cid != null) && (cid.intValue() > 0)) {
 			sb.append(" and s.category.id=").append(cid);
 		}

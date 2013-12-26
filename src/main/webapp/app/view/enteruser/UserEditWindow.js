@@ -182,11 +182,13 @@ Ext.define('plat.view.enteruser.UserEditWindow', {
 				          	
 				         },
 				         {
-				        	xtype: 'industrytypecombo',				        	
-				        	fieldLabel: '所属行业',				          	
+				        	xtype:'displayfield',
+				         	submitValue: true,
+				        	fieldLabel: '所属窗口',
 				           	name:'enterprise.industryType',
-				          	editable:false,
-				           	emptyText:'请选择所属行业...'				          	
+				           	renderer:function(value){
+				           		return PlatMap.Enterprises.industryType[value];
+				           	}				          	
 				         },
 				         {                                                        
                             fieldLabel: '法人姓名',

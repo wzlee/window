@@ -83,7 +83,7 @@ Ext.define('plat.view.enteruser.EnterUserGrid',{
                 { text: '电子邮箱',align:'center',width:100, dataIndex: 'enterprise.email',flex:1,
 	                renderer:function(value,metaData ,record){	                	
 	                	if(value){
-	                		return record.data.isApproved?value+'<img src="resources/images/drop-yes.gif" title="邮箱已验证" >':value+'<img title="邮箱未验证" src="resources/images/exclamation.png">';
+	                		return record.data.isApproved?value+'<img src="resources/images/drop-yes.gif" title="邮箱已激活" >':value+'<img title="邮箱未激活" src="resources/images/exclamation.png">';
 	                	}
 	                }
                 },

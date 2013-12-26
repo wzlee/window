@@ -480,10 +480,18 @@ Ext.define('plat.controller.cms.CmsController', {
 					this.number = number;
 					this.setTitle(this.otitle+"【"+ number +"】");
 					if(records){
-				    	var html = '<div width="100%" height="100%" style="text-align:right;">' +
+						if(records.micon.indexOf('http') > -1){
+							var html = '<div width="100%" height="100%" style="text-align:right;">' +
+				    					'<img number="'+ number +'" src="resources/images/delete.png" style="position:absolute;cursor:pointer;" />' +
+							   			'<img width="'+ this.width +'" height="'+ this.height + '" src="' + records.micon +'" style="vertical-align:middle;" />' +
+							   	   '</div>';
+						}else {
+							var html = '<div width="100%" height="100%" style="text-align:right;">' +
 				    					'<img number="'+ number +'" src="resources/images/delete.png" style="position:absolute;cursor:pointer;" />' +
 							   			'<img width="'+ this.width +'" height="'+ this.height +'" src="upload/'+ records.micon +'" style="vertical-align:middle;" />' +
 							   	   '</div>';
+						}
+				    	
 				    	this.body.update(html);
 				    	this.data = records;
 					} else {
@@ -547,10 +555,18 @@ Ext.define('plat.controller.cms.CmsController', {
 		        	//根据选择器查找当前的色块对象
 		        	var modelPanel = Ext.getCmp(record.data.ccode).down('panel[number='+ number +']');
 		        	if(modelPanel){
-			        	var html = '<div width="100%" height="100%" style="text-align:right;">' +
+		        		if(modelObj[i].micon.indexOf('http') > -1){
+		        			var html = '<div width="100%" height="100%" style="text-align:right;">' +
+			        					'<img number="'+ number +'" src="resources/images/delete.png" style="position:absolute;cursor:pointer;" />' +
+	            			   			'<img width="'+ modelPanel.width +'" height="'+ modelPanel.height +'" src="'+ modelObj[i].micon +'" style="vertical-align:middle;" />' +
+	            			   	   '</div>';
+		        		} else {
+		        			var html = '<div width="100%" height="100%" style="text-align:right;">' +
 			        					'<img number="'+ number +'" src="resources/images/delete.png" style="position:absolute;cursor:pointer;" />' +
 	            			   			'<img width="'+ modelPanel.width +'" height="'+ modelPanel.height +'" src="upload/'+ modelObj[i].micon +'" style="vertical-align:middle;" />' +
 	            			   	   '</div>';
+		        		}
+			        	
 			        	modelPanel.body.update(html);
 			        	//将该色块的所有属性都赋值到该色块的data(自己定义的)属性上
 			        	modelPanel.data = modelObj[i];
@@ -598,7 +614,11 @@ Ext.define('plat.controller.cms.CmsController', {
 	    	this.getModelForm().down('textfield[name=mindex]').setValue(record.get('clazz'));
 	    	this.getModelForm().down('textfield[name=mdesc]').setValue(record.get('description'));
 	    	this.getModelForm().down('textfield[name=micon]').setValue(record.get('picture'));
-	    	Ext.get('imgpre').dom.src = 'upload/' + record.get('picture');
+	    	if(record.get('picture').indexOf('http') > -1){
+	    		Ext.get('imgpre').dom.src = record.get('picture');
+	    	} else {
+	    		Ext.get('imgpre').dom.src = 'upload/' + record.get('picture');
+	    	}	    	
     	} else {
     		this.getModelForm().down('textfield[name=mname]').reset();
 	    	this.getModelForm().down('textfield[name=mindex]').reset();
@@ -696,7 +716,11 @@ Ext.define('plat.controller.cms.CmsController', {
 	    					}
 	    					if(item1.id == 'imgpre'){
 	    						//给色块图标预览的组件赋值
-	    						Ext.get('imgpre').dom.src = 'upload/' +record.micon;
+	    						if(record.micon.indexOf('http') > -1){
+	    							Ext.get('imgpre').dom.src = record.micon;
+	    						} else {
+	    							Ext.get('imgpre').dom.src = 'upload/' +record.micon;
+	    						}	    						
 	    					}
 	    					//继续遍历组件下面的组件
     						child(item1);
@@ -723,10 +747,17 @@ Ext.define('plat.controller.cms.CmsController', {
                 	if(result.success){
 	                	//获取刚刚配置的色块组件
 	                	var modelPanel = win.modelPanel;
-	                	var html = '<div width="100%" height="100%" style="text-align:right;">' +
+	                	if(result.message.indexOf('http') > -1){
+	                		var html = '<div width="100%" height="100%" style="text-align:right;">' +
+	                					'<img src="resources/images/delete.png" style="position:absolute;cursor:pointer;" />' +
+	                			   		'<img width="'+ modelPanel.width +'" height="'+ modelPanel.height +'" src="'+ result.message +'" style="vertical-align:middle;" />' +
+	                			   '</div>';
+	                	} else {
+	                		var html = '<div width="100%" height="100%" style="text-align:right;">' +
 	                					'<img src="resources/images/delete.png" style="position:absolute;cursor:pointer;" />' +
 	                			   		'<img width="'+ modelPanel.width +'" height="'+ modelPanel.height +'" src="upload/'+ result.message +'" style="vertical-align:middle;" />' +
 	                			   '</div>';
+	                	}  
 	                	//给预览模块的图标更新以下
 	                	win.modelPanel.body.update(html);
 	                	//将新的表单内容赋值给该色块
@@ -848,7 +879,12 @@ Ext.define('plat.controller.cms.CmsController', {
 		    		var formObj = but.ownerCt.ownerCt.formObj;
 		    		if(formObj){
 				       formObj.down('textfield[name=micon]').setValue(result.message);
-				       Ext.get('imgpre').dom.src = 'upload/' +result.message;
+				       if(result.message.indexOf('http') > -1){
+				       		Ext.get('imgpre').dom.src = result.message;
+				       } else {
+				       		Ext.get('imgpre').dom.src = 'upload/' +result.message;
+				       }
+				       
 				       me.getUploadwindow().hide();
 				       Ext.example.msg('','<p align="center">'+ result.message +'</p>');
 		    		} else {

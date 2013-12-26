@@ -51,9 +51,15 @@
     	<c:forEach items="${serviceViews}" var="serviceView">
     		<li>
 		        <div class="pic"><a href="service/detail?id=${serviceView.id}" target="blank">
-		        <img src="upload/${serviceView.picture}" width="218" height="180" onerror="this.src='resources/images/service/default_service_pic.gif'"/> 
+		        <c:if test="${serviceView.picture.contains('http')}">
+		        	<img src="${serviceView.picture}" width="218" height="180" onerror="this.src='resources/images/service/default_service_pic.gif'"/> 
+		        </c:if>
+		        <c:if test="${!serviceView.picture.contains('http')}">
+		        	<img src="upload/${serviceView.picture}" width="218" height="180" onerror="this.src='resources/images/service/default_service_pic.gif'"/> 
+		        </c:if>
+		        
 		        	<%-- <img class="lazy" src="resources/images/service/default_service_pic.gif" 
-									data-original="upload/${serviceView.picture}" width="218" height="180" alt="${serviceView.serviceName }" 
+									data-original="${serviceView.picture}" width="218" height="180" alt="${serviceView.serviceName }" 
 									title="${serviceView.serviceName }" onerror="nofind();"/> --%>
 		        </a></div>
 		        <h3 class="summary"><a href="service/detail?id=${serviceView.id}" target="blank">

@@ -127,7 +127,10 @@ Ext.define('plat.view.service.ServiceDetailWindow', {
 					            	xtype: 'displayfield',
 					            	width: 259,
 					            	name:'costPrice',
-					              	fieldLabel: '服务价格'
+					              	fieldLabel: '服务价格',
+					              	renderer:function(v){
+				        				return v==0?"面议":v;
+				        			}
 					           	},
 //				                {
 //				                    xtype: 'displayfield',

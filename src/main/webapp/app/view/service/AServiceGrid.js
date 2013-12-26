@@ -100,29 +100,52 @@ Ext.define('plat.view.service.AServiceGrid', {
 						}
 					},
 					{ text: '服务机构',align:'center',width:120,dataIndex:'enterprise.name',locked:true},
+//					{
+//						xtype : 'actioncolumn',
+//						text : '配图',
+//						align : 'center',
+//						locked : true,
+//						sortable : false,
+//						menuDisabled : true,
+//						width : 50,
+//						items : [{
+//							iconCls : 'icon-scan',
+//							tooltip : '查看服务配图',
+//							handler : function(grid, rowIndex, colIndex, item, e, record, row) {
+//								var picture = record.data.picture;
+//								var $scanImage = $("#scan-image a");
+//								if (picture) {
+//									if(picture.indexOf('http') > -1){
+//										$scanImage.attr("href", picture);
+//									}else {
+//										$scanImage.attr("href", "upload/" + picture);
+//									}									
+//								} else {
+//									$scanImage.attr("href", "resources/images/nopic.gif");
+//								}
+//								$("#scan-image a").trigger("click");
+//							}
+//						}]
+//					},
 					{
-						xtype : 'actioncolumn',
+				        xtype : 'actioncolumn',
 						text : '配图',
 						align : 'center',
-						locked : true,
 						sortable : false,
-						menuDisabled : true,
+						locked : true,
 						width : 50,
 						items : [{
-							iconCls : 'icon-scan',
+							icon : 'jsLib/extjs/resources/themes/icons/scan.png',
 							tooltip : '查看服务配图',
-							handler : function(grid, rowIndex, colIndex, item, e, record, row) {
-								var picture = record.data.picture;
-								var $scanImage = $("#scan-image a");
-								if (picture) {
-									$scanImage.attr("href", "upload/" + picture);
-								} else {
-									$scanImage.attr("href", "resources/images/nopic.gif");
-								}
-								$("#scan-image a").trigger("click");
+							handler : function(grid, rowIndex, colIndex, node,
+									e, record, rowEl) {
+								this.fireEvent('pictureclick', this, grid,
+										rowIndex, colIndex, node, e, record,
+										rowEl);
 							}
 						}]
-					}, {
+				    },
+					{
 						xtype : 'actioncolumn',
 						text : '批准',
 						align : 'center',

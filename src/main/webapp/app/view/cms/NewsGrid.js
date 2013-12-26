@@ -41,7 +41,8 @@ Ext.define('plat.view.cms.NewsGrid', {
 							value = "新闻动态";
 					}
 					return value;
-				}}*/, {
+				}}*/, 
+				{
 					xtype : 'actioncolumn',
 					text : '配图',
 					align : 'center',
@@ -49,20 +50,17 @@ Ext.define('plat.view.cms.NewsGrid', {
 					menuDisabled : true,
 					width : 50,
 					items : [{
-						iconCls : 'icon-scan',
-						tooltip : '查看新闻配图',
-						handler : function(grid, rowIndex, colIndex, item, e, record, row) {
-							var picture = record.data.picture;
-							var $scanImage = $("#scan-image a");
-							if (picture) {
-								$scanImage.attr("href", "upload/" + picture);
-							} else {
-								$scanImage.attr("href", "resources/images/nopic.gif");
+							icon : 'jsLib/extjs/resources/themes/icons/scan.png',
+							tooltip : '查看新闻配图',
+							handler : function(grid, rowIndex, colIndex, node,
+									e, record, rowEl) {
+								this.fireEvent('pictureclick', this, grid,
+										rowIndex, colIndex, node, e, record,
+										rowEl);
 							}
-							$("#scan-image a").trigger("click");
-						}
 					}]
-				}, {
+				}, 
+				{
 			        xtype:'actioncolumn',
 			        text:'修改',
 			        align:'center',

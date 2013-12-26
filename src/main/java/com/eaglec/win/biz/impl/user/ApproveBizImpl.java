@@ -207,6 +207,9 @@ public class ApproveBizImpl implements ApproveBiz {
 			enterprise.setOrgWebsite(orgRegisterApproval.getOrgWebsite());	//公司网址
 			
 			enterpriseDao.save(enterprise);
+
+			orgRegisterApproval.setEnterprise(enterprise);//xuwf 20131220通过的服务机构注册审核关联企业
+			
 			user.setEnterprise(enterprise);
 			userDao.save(user);
 			

@@ -4,7 +4,6 @@ import java.io.File;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -251,7 +250,7 @@ public class UserController extends BaseController {
 					user.getEnterprise().setPhoto(_enterprise.getPhoto());
 				}
 				_enterprise = user.getEnterprise();	
-				_enterprise.setIndustryType(Integer.valueOf(ResourceBundle.getBundle("config").getString("window.id")));	
+//				_enterprise.setIndustryType(Integer.valueOf(ResourceBundle.getBundle("config").getString("window.id")));	
 				
 				_enterprise.setType(Constant.ENTERPRISE_TYPE_PUBLIC);
 				_enterprise.setIndustryType(Common.windowId);
@@ -603,7 +602,7 @@ public class UserController extends BaseController {
 			// ,user.getEmail());
 			if (userBiz.findUserByName(user.getUserName()) == null
 					|| userBiz.findUserByName(user.getUserName()).size() == 0) {
-				user.setApproved(false);
+				user.setIsApproved(false);
 				user.setCheckcode(check);
 				user.setPassword(MD5.toMD5(user.getPassword()));
 				Enterprise enterprise = new Enterprise();
@@ -651,7 +650,7 @@ public class UserController extends BaseController {
 			try {
 				if(list.isEmpty()){
 					user.setPassword(MD5.toMD5(user.getPassword()));
-					user.setPersonal(true);
+					user.setIsPersonal(true);
 					userBiz.add(user);					
 					logger.info("[ "+user.getUserName()+" ]添加成功!");
 					this.outJson(response,new JSONResult(true,"帐号[" + user.getUserName() + "]添加成功!"));	

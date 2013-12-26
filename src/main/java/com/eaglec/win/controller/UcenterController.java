@@ -158,7 +158,7 @@ public class UcenterController extends BaseController{
 							String login_code = new String(Base64.encode(login_params.getBytes("utf-8")));
 							srcs.add(flat.getUcenter_api()+"?time="+time+"&action=synlogin&code="+URLEncoder.encode(login_code, "utf-8"));
 						}
-						model.addAttribute("message", "同步登陆成功");
+						model.addAttribute("message", "登陆成功");
 						model.addAttribute("srcs", srcs);
 						model.addAttribute("redirect_url", params[2]);
 						return "oauth/sync";

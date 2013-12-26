@@ -41,7 +41,8 @@ Ext.define('plat.controller.service.ServiceController', {
     			'public.UploadForm',
     			'service.ApprServiceWindow',
     			'service.TopThreeGrid',
-    			'service.TopThreeWindow'
+    			'service.TopThreeWindow',
+    			'service.PictureWindow'
 //    			'layout.combo.CategoryTreePicker'
     		],
     refs: [
@@ -128,6 +129,10 @@ Ext.define('plat.controller.service.ServiceController', {
 	     	{
 	     		ref:'topthreewindow',
 	     		selector:'topthreewindow'
+	     	},
+	     	{
+	     		ref:'picturewindow',
+	     		selector:'picturewindow'
 	     	}
     ],
     
@@ -185,6 +190,30 @@ Ext.define('plat.controller.service.ServiceController', {
             		}else{
             			this.editServiceData(record);
             		}
+            	}
+            },
+            'nservicegrid actioncolumn,aservicegrid actioncolumn,dservicegrid actioncolumn,qservicegrid actioncolumn,rservicegrid actioncolumn,uservicegrid actioncolumn':{
+            	pictureclick:function(column,grid, rowIndex, colIndex, node, e, record, rowEl){
+            		  var record = grid.getStore().getAt(rowIndex);
+					  var src = record.data.picture;
+					  if (src) {
+						 if(src.indexOf('http') > -1){
+						     src = record.data.picture;
+						 }else {
+						     src = 'upload/'+record.data.picture;
+						 }					       			
+					  } else {
+						 src = 'resources/images/service/default_service_pic.gif';
+					  }
+					  var pictureWindows = this.getPicturewindow();
+				      if(!pictureWindows){
+				    	  pictureWindows = Ext.widget('picturewindow',{
+				    		title:'查看图片['+record.data.serviceName+']'
+				          });    		
+				      }
+					  pictureWindows.update({src:src});
+					  pictureWindows.show();
+					  pictureWindows.setTitle('查看图片['+record.data.serviceName+']');
             	}
             },
             'nservicegrid triggerfield':{            	

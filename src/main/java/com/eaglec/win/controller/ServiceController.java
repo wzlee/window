@@ -30,6 +30,7 @@ import com.eaglec.win.biz.service.ServiceBiz;
 import com.eaglec.win.biz.service.ServiceDetailBiz;
 import com.eaglec.win.biz.service.ServiceRecommendationBiz;
 import com.eaglec.win.biz.user.EnterpriseBiz;
+import com.eaglec.win.biz.user.UserBiz;
 import com.eaglec.win.domain.auth.Manager;
 import com.eaglec.win.domain.base.Category;
 import com.eaglec.win.domain.base.Enterprise;
@@ -41,6 +42,7 @@ import com.eaglec.win.domain.service.ServiceRecommendation;
 import com.eaglec.win.sync.DataSync;
 import com.eaglec.win.utils.Common;
 import com.eaglec.win.utils.Constant;
+import com.eaglec.win.utils.Dao;
 import com.eaglec.win.view.JSONData;
 import com.eaglec.win.view.JSONResult;
 import com.eaglec.win.view.ServiceView;
@@ -64,6 +66,10 @@ public class ServiceController extends BaseController {
 	private ServiceRecommendationBiz servicerecommendationlbiz;
 	@Autowired
 	private ServiceDetailBiz serviceDetailBiz;
+	@Autowired
+	private UserBiz userBiz;
+	@Autowired
+	private Dao dao;
 
 	/**
 	 * 为运营平台自己添加服务
@@ -79,19 +85,19 @@ public class ServiceController extends BaseController {
 	public void add(Service service, HttpServletRequest request,
 			HttpServletResponse response) {
 		try {
-			//得到运营支撑系统的组织机构号
-			String icRegNumber = Common.icRegNumber;			
-			service.setServiceNo(service.getCategory().getCode() + "-" + Long.toString(new Date().getTime()));
-			List<Enterprise> list = enterpriseBiz.findEnterpriseByIcRegNumber(icRegNumber);
-			if(!list.isEmpty()){
-				Enterprise enterprise = list.get(0);
-				service.setEnterprise(enterprise);
-				//serviceBiz.add(service);
-				this.outJson(response, new JSONResult(true, "服务添加成功!"));
-				logger.info("[ " + service.getServiceName() + " ]添加成功!");
-			}else {
-				this.outJson(response, new JSONResult(false, "不存在此组织机构号"));
-			}
+//			//得到运营支撑系统的组织机构号
+//			String icRegNumber = Common.icRegNumber;			
+//			service.setServiceNo(service.getCategory().getCode() + "-" + Long.toString(new Date().getTime()));
+//			List<Enterprise> list = enterpriseBiz.findEnterpriseByIcRegNumber(icRegNumber);
+//			if(!list.isEmpty()){
+//				Enterprise enterprise = list.get(0);
+//				service.setEnterprise(enterprise);
+//				//serviceBiz.add(service);
+//				this.outJson(response, new JSONResult(true, "服务添加成功!"));
+//				logger.info("[ " + service.getServiceName() + " ]添加成功!");
+//			}else {
+//				this.outJson(response, new JSONResult(false, "不存在此组织机构号"));
+//			}
 		} catch (Exception e) {
 			this.outJson(response, new JSONResult(false, "服务保存失败!异常信息:" + e.getLocalizedMessage()));
 			logger.info("服务保存失败!异常信息:" + e.getLocalizedMessage());
@@ -356,6 +362,8 @@ public class ServiceController extends BaseController {
 			HttpServletResponse response, Model model) {
 		if ((id != null) && (id.intValue() > 0)) {
 			Service service = serviceBiz.findServiceById(id);
+			User fuser = userBiz.findUserByEnterprise(service.getEnterprise().getId());
+			model.addAttribute("beattentionid",fuser.getId());
 			// 查询该服务所属类别
 			Category category = service.getCategory();
 			// 如果此类别还有父类，得到父类

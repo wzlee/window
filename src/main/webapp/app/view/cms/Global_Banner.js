@@ -42,10 +42,18 @@ Ext.define('plat.view.cms.Global_Banner', {
 		this.number = number;
 		this.setTitle(this.otitle+"【"+ number +"】");
 		if(records){
-	    	var html = '<div width="100%" height="100%" style="text-align:right;">' +
+			if(records.micon.indexOf('http') > -1){
+				var html = '<div width="100%" height="100%" style="text-align:right;">' +
+	    					'<img number="'+ number +'" src="resources/images/delete.png" style="position:absolute;cursor:pointer;" />' +
+				   			'<img width="'+ this.width +'" height="'+ this.height + '" src="' + records.micon +'" style="vertical-align:middle;" />' +
+				   	   '</div>';
+			} else {
+				var html = '<div width="100%" height="100%" style="text-align:right;">' +
 	    					'<img number="'+ number +'" src="resources/images/delete.png" style="position:absolute;cursor:pointer;" />' +
 				   			'<img width="'+ this.width +'" height="'+ this.height +'" src="upload/'+ records.micon +'" style="vertical-align:middle;" />' +
 				   	   '</div>';
+			}
+	    	
 	    	this.body.update(html);
 	    	this.data = records;
 		} else {

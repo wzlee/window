@@ -33,7 +33,14 @@
       <div class="ar-content">
       	<c:choose>
 			<c:when test="${oneNews.picture != ''}">
-				<p align="center"><img src="upload/${oneNews.picture}" /></p>
+				<p align="center">
+				<c:if test="${oneNews.picture.contains('http')}">
+					<img src="${oneNews.picture}" />
+				</c:if>
+				<c:if test="${!oneNews.picture.contains('http')}">
+					<img src="upload/${oneNews.picture}" />
+				</c:if>				
+				</p>
 			</c:when>
 		</c:choose>
       	${oneNews.content}
@@ -45,7 +52,13 @@
           <c:forEach var="item" items="${hotNews }" begin="0" end="0">
         	<div class="box-thumb">
         	<a href="news/getOneNewsDetails?id=${item.id }" title="${item.title }">
-        	<img src="upload/${item.picture}" alt="" width="190" height="80" />
+        	<c:if test="${item.picture.contains('http')}">
+        		<img src="${item.picture}" alt="" width="190" height="80" />
+        	</c:if>
+        	<c:if test="${!item.picture.contains('http')}">
+        		<img src="upload/${item.picture}" alt="" width="190" height="80" />
+        	</c:if>
+        	
         	<h4>${fn:substring(item.title, 0, 13) }</h4></a>
         	</div>
           </c:forEach>

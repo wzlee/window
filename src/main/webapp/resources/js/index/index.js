@@ -142,7 +142,19 @@ $(function(){
 				if (type == 0) {
 					html = '<ul class="thumb-style">';	
 					$.each(topthree, function(i, n){
-						html = html + '<li>' +
+						if(n.picture.indexOf('http') > -1){
+							html = html + '<li>' +
+										'<a href="service/detail?id='+n.id+'" target="_blank">'+
+										'<img alt="'+n.serviceName+'" title="'+n.serviceName+'" src="' + n.picture +'" width="232" height="200" onerror="this.src=\'resources/images/service/default_service_pic.gif\'"/>' +
+										'</a>'+
+											'<h3 class="name">'+n.serviceName+
+											'</h3>' +
+											'<h3 class="apply">' +
+												'<a class="apply-button" href="service/detail?id='+n.id+'" target="_blank">查看详情</a>' +
+											'</h3>' +
+										'</li>';
+						}else {
+							html = html + '<li>' +
 										'<a href="service/detail?id='+n.id+'" target="_blank">'+
 										'<img alt="'+n.serviceName+'" title="'+n.serviceName+'" src="upload/' + n.picture +'" width="232" height="200" onerror="this.src=\'resources/images/service/default_service_pic.gif\'"/>' +
 										'</a>'+
@@ -152,11 +164,12 @@ $(function(){
 												'<a class="apply-button" href="service/detail?id='+n.id+'" target="_blank">查看详情</a>' +
 											'</h3>' +
 										'</li>';
+						}
 					});
 					$.each(data, function(i, n){
 						html = html + '<li>' +
 										'<a href="service/detail?id='+n.id+'" target="_blank">'+
-										'<img alt="'+n.serviceName+'" title="'+n.serviceName+'" src="upload/' + n.picture +'" width="232" height="200" onerror="this.src=\'resources/images/service/default_service_pic.gif\'"/>' +
+										'<img alt="'+n.serviceName+'" title="'+n.serviceName+'" src="' + n.picture +'" width="232" height="200" onerror="this.src=\'resources/images/service/default_service_pic.gif\'"/>' +
 										'</a>'+
 											'<h3 class="name">'+n.serviceName+
 											'</h3>' +
@@ -180,7 +193,7 @@ $(function(){
 						html = html + '<div class="list-item">' +
 							            '<a class="apply-service" href="service/detail?id='+n.id+'" target="_blank">查看详情</a>' +
 							            '<div class="pic"><a href="service/detail?id='+n.id+'" target="_blank">' +
-							            	'<img alt="'+n.serviceName+'" title="'+n.serviceName+'" src="upload/' + n.picture +'" width="174" height="150" onerror="this.src=\'resources/images/service/default_service_pic.gif\'"/>' +
+							            	'<img alt="'+n.serviceName+'" title="'+n.serviceName+'" src="' + n.picture +'" width="174" height="150" onerror="this.src=\'resources/images/service/default_service_pic.gif\'"/>' +
 							            '</a></div>' +
 							            '<div class="info">' + 
 							              '<h3 class="service-name"><a href="service/detail?id='+n.id+'" target="_blank">' + n.serviceName + '</a></h3>' +

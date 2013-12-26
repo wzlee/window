@@ -12,7 +12,7 @@ Ext.define('plat.view.layout.combo.PropertyCombo',{
 			[3,'社会团体'],
 			[4,'个体工商户'],
 			[5,'民办非企业'],
-			[9,'其他']			
+			[6,'其他']			
 			]	
 		})
 });

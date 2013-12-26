@@ -44,29 +44,51 @@ Ext.define('plat.view.service.RServiceGrid',{
 				        { text: '服务ID',align:'center', dataIndex: 'id',hidden:true},				        
 //				        { text: '服务编码',align:'center',width:162, dataIndex: 'serviceNo',locked:true},
 				        { text: '服务名称',align:'center',width:120, dataIndex: 'serviceName',locked:true},
-				        { text: '注册时间',align:'center',width:144, dataIndex: 'registerTime',locked:true },
+				        { text: '添加时间',align:'center',width:144, dataIndex: 'registerTime',locked:true },
 				        { text: '服务状态',align:'center',width:84, dataIndex: 'currentStatus',locked:true,
 				        	renderer:function(value){
 				        		return PlatMap.Service.currentStatus[value];
 				        	}
 				        },
 				        { text: '服务机构',align:'center',width:120,dataIndex:'enterprise.name',locked:true},
-				        {
-				       		header : '配图',
-				       		dataIndex : 'picture',
-				       		width : 50,
-				       		locked : true,
-				       		toolTip : '55',
-				       		align : 'center',
-				       		renderer : function (value) {
-				       			
-				       			if (value) {
-					       			return "<a href='upload/" + value + "' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
-				       			} else {
-				       				return "<a href='resources/images/nopic.gif' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
-				       			}
-				       		}
-				       },
+//				        {
+//				       		header : '配图',
+//				       		dataIndex : 'picture',
+//				       		width : 50,
+//				       		locked : true,
+//				       		toolTip : '55',
+//				       		align : 'center',
+//				       		renderer : function (value) {
+//				       			
+//				       			if (value) {
+//				       				if(value.indexOf('http') > -1){
+//				       					return "<a href='" + value + "' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
+//				       				} else {
+//				       					return "<a href='upload/" + value + "' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
+//				       				}					       			
+//				       			} else {
+//				       				return "<a href='resources/images/nopic.gif' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
+//				       			}
+//				       		}
+//				       },
+ 						{
+					        xtype : 'actioncolumn',
+							text : '配图',
+							align : 'center',
+							sortable : false,
+							locked : true,
+							width : 50,
+							items : [{
+								icon : 'jsLib/extjs/resources/themes/icons/scan.png',
+								tooltip : '查看服务配图',
+								handler : function(grid, rowIndex, colIndex, node,
+										e, record, rowEl) {
+									this.fireEvent('pictureclick', this, grid,
+											rowIndex, colIndex, node, e, record,
+											rowEl);
+								}
+							}]
+				    	},
 //				       {	
 //				        	xtype:'actioncolumn',
 //					        text:'还原',

@@ -52,22 +52,46 @@ Ext.define('plat.view.service.DServiceGrid',{
 					        }
 				        },
 				        { text: '服务机构',align:'center',width:120,dataIndex:'enterprise.name',locked:true},
-				        {
-				       		header : '配图',
-				       		dataIndex : 'picture',
-				       		width : 50,
-				       		locked : true,
-				       		toolTip : '55',
-				       		align : 'center',
-				       		renderer : function (value) {
-				       			
-				       			if (value) {
-					       			return "<a href='upload/" + value + "' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
-				       			} else {
-				       				return "<a href='resources/images/nopic.gif' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
-				       			}
-				       		}
-				       },{
+//				        {
+//				       		header : '配图',
+//				       		dataIndex : 'picture',
+//				       		width : 50,
+//				       		locked : true,
+//				       		toolTip : '55',
+//				       		align : 'center',
+//				       		renderer : function (value) {
+//				       			
+//				       			if (value) {
+//				       				if(value.indexOf('http') > -1){
+//				       					return "<a href='" + value + "' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
+//				       				} else {
+//				       					return "<a href='upload/" + value + "' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
+//				       				}				       				
+//					       			
+//				       			} else {
+//				       				return "<a href='resources/images/nopic.gif' class='fancybox'><img src='jsLib/extjs/resources/themes/icons/scan.png' /></a>";
+//				       			}
+//				       		}
+//				       },
+				       {
+					        xtype : 'actioncolumn',
+							text : '配图',
+							align : 'center',
+							sortable : false,
+							locked : true,
+							width : 50,
+							items : [{
+								icon : 'jsLib/extjs/resources/themes/icons/scan.png',
+								tooltip : '查看服务配图',
+								handler : function(grid, rowIndex, colIndex, node,
+										e, record, rowEl) {
+									this.fireEvent('pictureclick', this, grid,
+											rowIndex, colIndex, node, e, record,
+											rowEl);
+								}
+							}]
+				    	},
+				       {
 				            xtype:'actioncolumn',
 				            text:'删除',
 				            align:'center',
@@ -124,41 +148,41 @@ Ext.define('plat.view.service.DServiceGrid',{
 						                    var record = grid.getStore().getAt(rowIndex);
 						                    Ext.MessageBox.confirm('警告','确定申请上架【 '+record.data.serviceName+' 】吗?',function(btn){
 									    		if(btn == 'yes'){
-									    			if(PlatSwitch){
-									    				Ext.data.JsonP.request({
-									              	url: PlatUrl + 'public/checkService',
-									              	timeout: 300000,
-									             	params: { sno: record.data.serviceNo },
-									             	callbackKey: "callback",
-									            	success: function(result,a,b) {									            										            		
-									            		if(result.success){
-									            			record.set('currentStatus',2);
-											    			record.set('lastStatus',6);
-											    			record.set('locked',1);									    			
-											    			grid.getStore().update({
-											    				params:record.data,
-											    				callback:function(record,operation,success){
-											    					if(success){
-											    						var result =Ext.JSON.decode(operation.response.responseText);								    						
-											    						if(result.success){
-											    							Ext.example.msg('','<p align="center">服务【'+operation.params.serviceName+'】申请上架成功</p>');
-											    						}else {
-											    							Ext.Msg.alert('提示','服务【'+operation.params.serviceName+'】申请上架失败');
-											    						}
-											    					}else {
-											    						Ext.Msg.alert('提示',operation.error);
-											    					}
-											    				}
-										    				});
-									            		}else {
-									            			Ext.Msg.alert('提示',result.message + ",无法上架");
-									            		}
-									            	},
-									             	failure: function(result) {
-									             		Ext.Msg.alert('提示',"连接枢纽服务器失败，请联系管理员");
-									            	}
-									         	});
-									    			}else {
+//									    			if(PlatSwitch){
+//									    				Ext.data.JsonP.request({
+//									              	url: PlatUrl + 'public/checkService',
+//									              	timeout: 300000,
+//									             	params: { sno: record.data.serviceNo },
+//									             	callbackKey: "callback",
+//									            	success: function(result,a,b) {									            										            		
+//									            		if(result.success){
+//									            			record.set('currentStatus',2);
+//											    			record.set('lastStatus',6);
+//											    			record.set('locked',1);									    			
+//											    			grid.getStore().update({
+//											    				params:record.data,
+//											    				callback:function(record,operation,success){
+//											    					if(success){
+//											    						var result =Ext.JSON.decode(operation.response.responseText);								    						
+//											    						if(result.success){
+//											    							Ext.example.msg('','<p align="center">服务【'+operation.params.serviceName+'】申请上架成功</p>');
+//											    						}else {
+//											    							Ext.Msg.alert('提示','服务【'+operation.params.serviceName+'】申请上架失败');
+//											    						}
+//											    					}else {
+//											    						Ext.Msg.alert('提示',operation.error);
+//											    					}
+//											    				}
+//										    				});
+//									            		}else {
+//									            			Ext.Msg.alert('提示',result.message + ",无法上架");
+//									            		}
+//									            	},
+//									             	failure: function(result) {
+//									             		Ext.Msg.alert('提示',"连接枢纽服务器失败，请联系管理员");
+//									            	}
+//									         	});
+//									    			}else {
 									    				record.set('currentStatus',2);
 											    			record.set('lastStatus',6);
 											    			record.set('locked',1);								    			
@@ -178,7 +202,7 @@ Ext.define('plat.view.service.DServiceGrid',{
 											    				}
 										    				});
 									    				
-									    			}
+//									    			}
 									    			
 									    		}
 									    	});

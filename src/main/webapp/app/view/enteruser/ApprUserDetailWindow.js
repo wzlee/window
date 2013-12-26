@@ -44,14 +44,22 @@ Ext.define('plat.view.enteruser.ApprUserDetailWindow', {
 				        			var record = this.up('form').getRecord();
 				        			if(record && record.raw.enterprise.isApproved) val = record.raw.enterprise.licenceDuplicate;
 					    			if(val == '') return '暂无';
-					    			return "<a href='upload/" + val + "' class='fancybox'>点击查看</a>";
+					    			if(val.indexOf('http') > -1){
+					    				return "<a target='_blank' href='" + val + "'>点击查看</a>";
+					    			}else {
+					    				return "<a target='_blank' href='upload/" + val + "'>点击查看</a>";
+					    			}					    			
 					    		}
 					    	},
 					    	{fieldLabel: '企业公函',columnWidth:0.5,name:'businessLetter', renderer : function(val){
 					    			var record = this.up('form').getRecord();
 				        			if(record && record.raw.enterprise.isApproved) val = record.raw.enterprise.businessLetter;
 					    			if(val == '') return '暂无';
-					    			return "<a href='upload/" + val + "' class='fancybox'>点击查看</a>";
+					    			if(val.indexOf('http') > -1){
+					    				return "<a target='_blank' href='" + val + "'>点击查看</a>";
+					    			}else {
+					    				return "<a target='_blank' href='upload/" + val + "'>点击查看</a>";
+					    			}						    			
 					    		} 
 					    	},
 					    	{fieldLabel: '申请时间',columnWidth:0.5,name:'applyTime' }
